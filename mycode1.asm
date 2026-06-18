@@ -1,0 +1,34 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+msg DB 'hello$'
+
+.CODE
+MAIN PROC
+
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV CX, 5
+
+START:
+
+    MOV AH, 09H
+    LEA DX, msg
+    INT 21H
+
+    MOV AH, 02H
+    MOV DL, 0DH
+    INT 21H
+
+    MOV DL, 0AH
+    INT 21H
+
+    LOOP START
+
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN

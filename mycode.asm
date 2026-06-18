@@ -1,0 +1,33 @@
+.MODEL SMALL
+.STACK 100H
+
+.CODE
+MAIN PROC
+
+    MOV DL, '1'
+    MOV CX, 5
+
+AGAIN:
+    MOV AH, 02H
+    INT 21H
+
+    ; New Line
+    MOV DL, 0DH
+    MOV AH, 02H
+    INT 21H
+
+    MOV DL, 0AH
+    MOV AH, 02H
+    INT 21H
+
+    MOV DL, '1'
+    ADD DL, 5
+    SUB DL, CL
+
+    LOOP AGAIN
+
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
